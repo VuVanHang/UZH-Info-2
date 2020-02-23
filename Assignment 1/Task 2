@@ -1,0 +1,44 @@
+//
+//  main.c
+//  UZH_Info2
+//
+//  Created by Yves Julien Betschmann on 20.02.20.
+//  Copyright © 2020 Yves Julien Betschmann. All rights reserved.
+//
+
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+bool isPalindrome(char s[]) {
+    
+    unsigned long length;           //defining position of last char and middle
+    unsigned long last_char;
+    int i;
+    length = strlen(s) - 1;
+    last_char = length - 1;
+    
+    for (i = 0; i < last_char / 2; i++) {         //no need to distinguish between odd/even length
+        if (s[i] != s[last_char]) {
+            return false;
+        }
+        last_char -= 1;
+    }
+    return true;
+}
+
+int main() {
+    char s[1000];                   // input for string
+    printf("Please enter a string to check if it is palindrome: ");
+    fgets(s, 1000 , stdin);
+    bool value = isPalindrome(s);
+    if (value == 1) {
+        printf("Result string: TRUE\n");
+    }
+    else {
+        printf("Result string: FALSE\n");
+    }
+    return 0;
+}
+
+
