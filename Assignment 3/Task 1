@@ -1,0 +1,43 @@
+//
+//  main.c
+//  UZH_Info2
+//
+//  Created by Yves Julien Betschmann on 20.02.20.
+//  Copyright © 2020 Yves Julien Betschmann. All rights reserved.
+//
+
+#include <stdio.h>
+
+int whatDoesItDo(int A[],int k,int n) {
+    int sum = 0, i, mini, j, swp;
+    
+    for (i = 0; i < k; ++i) {
+        mini = i;
+        for (j = i + 1; j < n; ++j) {
+            if (A[j] < A[mini]) {
+                mini = j;
+            }
+        }
+        sum += A[mini];
+        swp = A[i];
+        A[i] = A[mini];
+        A[mini] = swp;
+    }
+    printf("%d", sum);
+    return sum;
+}
+
+int main() {
+    int n = 0;
+    int A[1000];
+    int k = 0;
+    
+    printf("Values of A separated by spaces (non-number to stop): ");
+    while (scanf("%d", &A[n])) {
+        ++n;
+    }
+    scanf("%*s");
+    scanf("%d", &k);
+    whatDoesItDo(A, k, n);
+    return 0;
+}
